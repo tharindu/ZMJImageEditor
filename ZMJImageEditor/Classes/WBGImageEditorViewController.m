@@ -697,22 +697,22 @@ NSString * const kColorPanNotificaiton = @"kColorPanNotificaiton";
         //ShowBusyTextIndicatorForView(self.view, @"生成图片中...", nil);
     }
 //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        CGFloat WS = self.imageView.width/ self.drawingView.width;
-        CGFloat HS = self.imageView.height/ self.drawingView.height;
+    
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        
+        CGFloat WS = self.imageView.width/ self.drawingView.width;
+        CGFloat HS = self.imageView.height/ self.drawingView.height;
+        
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.imageView.image.size.width, self.imageView.image.size.height),
                                                NO,
                                                self.imageView.image.scale);
-    });
-    
         [self.imageView.image drawAtPoint:CGPointZero];
         CGFloat viewToimgW = self.imageView.width/self.imageView.image.size.width;
         CGFloat viewToimgH = self.imageView.height/self.imageView.image.size.height;
         __unused CGFloat drawX = self.imageView.left/viewToimgW;
         CGFloat drawY = self.imageView.top/viewToimgH;
         [_drawingView.image drawInRect:CGRectMake(0, -drawY, self.imageView.image.size.width/WS, self.imageView.image.size.height/HS)];
-    dispatch_async(dispatch_get_main_queue(), ^{
         for (UIView *subV in _drawingView.subviews) {
             if ([subV isKindOfClass:[WBGTextToolView class]]) {
                 WBGTextToolView *textLabel = (WBGTextToolView *)subV;
@@ -734,35 +734,31 @@ NSString * const kColorPanNotificaiton = @"kColorPanNotificaiton";
                 [textImg drawInRect:CGRectMake(textLabel.left/selfRw, (textLabel.top/selfRh) - drawY, sw, sh)];
             }
         }
-    });
-    
+        
         UIImage *tmp = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
+        UIImage *image = [UIImage imageWithCGImage:tmp.CGImage scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp];
+        clipedCallback(image);
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //HideBusyIndicatorForView(self.view);
-            UIImage *image = [UIImage imageWithCGImage:tmp.CGImage scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp];
-            clipedCallback(image);
-            
-        });
-//    });
+    });
+    
+
 }
 
 + (UIImage *)screenshot:(UIView *)view orientation:(UIDeviceOrientation)orientation usePresentationLayer:(BOOL)usePresentationLayer
 {
-    __block CGSize targetSize = CGSizeZero;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        CGSize size = view.bounds.size;
-        targetSize = CGSizeMake(size.width * view.layer.transformScaleX, size.height *  view.layer.transformScaleY);
-    });
+    CGSize targetSize = CGSizeZero;
+    
+    CGSize size = view.bounds.size;
+    targetSize = CGSizeMake(size.width * view.layer.transformScaleX, size.height *  view.layer.transformScaleY);
     
     UIGraphicsBeginImageContextWithOptions(targetSize, NO, [UIScreen mainScreen].scale);
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextSaveGState(ctx);
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [view drawViewHierarchyInRect:CGRectMake(0, 0, targetSize.width, targetSize.height) afterScreenUpdates:NO];
-    });
+    
+    [view drawViewHierarchyInRect:CGRectMake(0, 0, targetSize.width, targetSize.height) afterScreenUpdates:NO];
+    
     CGContextRestoreGState(ctx);
     
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
