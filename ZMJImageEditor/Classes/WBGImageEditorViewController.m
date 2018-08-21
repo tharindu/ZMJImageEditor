@@ -153,8 +153,8 @@ NSString * const kColorPanNotificaiton = @"kColorPanNotificaiton";
     if (curComponent == 0) { curComponent = WBGImageEditorWholeComponent; }
     if (curComponent & WBGImageEditorDrawComponent) { self.panButton.hidden = NO; [valibleCompoment addObject:self.panButton]; }
     if (curComponent & WBGImageEditorTextComponent) { self.textButton.hidden = NO; [valibleCompoment addObject:self.textButton]; }
-    if (curComponent & WBGImageEditorClipComponent) { self.clipButton.hidden = NO; [valibleCompoment addObject:self.clipButton]; }
-    if (curComponent & WBGImageEditorPaperComponent) { self.paperButton.hidden = NO; [valibleCompoment addObject:self.paperButton]; }
+//    if (curComponent & WBGImageEditorClipComponent) { self.clipButton.hidden = NO; [valibleCompoment addObject:self.clipButton]; }
+//    if (curComponent & WBGImageEditorPaperComponent) { self.paperButton.hidden = NO; [valibleCompoment addObject:self.paperButton]; }
     if (curComponent & WBGImageEditorColorPanComponent) { self.colorPan.hidden = NO; }
     
     [valibleCompoment enumerateObjectsUsingBlock:^(UIButton * _Nonnull button, NSUInteger idx, BOOL * _Nonnull stop) {
