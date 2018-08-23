@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="2064" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -69,8 +69,8 @@
                                     <rect key="frame" x="309" y="0.0" width="66" height="49"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <state key="normal" title="发送">
-                                        <color key="titleColor" red="0.15686274509803921" green="0.60784313725490191" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Save">
+                                        <color key="titleColor" red="0.15686274510000001" green="0.60784313729999995" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
                                         <action selector="sendAction:" destination="-1" eventType="touchUpInside" id="9Z9-uw-HJK"/>
@@ -120,13 +120,15 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKW-ZA-nXo">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeV-aj-vVt">
-                                    <rect key="frame" x="317" y="0.0" width="58" height="64"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeV-aj-vVt">
+                                    <rect key="frame" x="305" y="0.0" width="70" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="70" id="5pk-tO-fhI"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <inset key="titleEdgeInsets" minX="0.0" minY="14" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="撤销">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="Undo">
+                                        <color key="titleColor" red="0.15686274510000001" green="0.60784313729999995" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <state key="disabled">
                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -135,12 +137,14 @@
                                         <action selector="undoAction:" destination="-1" eventType="touchUpInside" id="MFr-PX-eOZ"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1E-fP-iEK">
-                                    <rect key="frame" x="0.0" y="0.0" width="58" height="64"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1E-fP-iEK">
+                                    <rect key="frame" x="0.0" y="0.0" width="70" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="70" id="ugt-wc-OmN"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <inset key="titleEdgeInsets" minX="0.0" minY="14" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="返回">
+                                    <inset key="titleEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="Back">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <state key="disabled">
@@ -153,7 +157,13 @@
                             </subviews>
                             <color key="backgroundColor" red="0.086274509803921567" green="0.098039215686274508" blue="0.10196078431372549" alpha="0.88" colorSpace="calibratedRGB"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="yeV-aj-vVt" secondAttribute="trailing" id="M11-QC-laj"/>
+                                <constraint firstItem="yeV-aj-vVt" firstAttribute="top" secondItem="vKW-ZA-nXo" secondAttribute="top" id="bbH-L8-yec"/>
                                 <constraint firstAttribute="height" constant="64" id="g2k-gl-jyQ"/>
+                                <constraint firstItem="U1E-fP-iEK" firstAttribute="top" secondItem="vKW-ZA-nXo" secondAttribute="top" id="nZM-qB-QGQ"/>
+                                <constraint firstAttribute="bottom" secondItem="yeV-aj-vVt" secondAttribute="bottom" id="ujk-SN-MLy"/>
+                                <constraint firstAttribute="bottom" secondItem="U1E-fP-iEK" secondAttribute="bottom" id="vKj-8I-3tp"/>
+                                <constraint firstItem="U1E-fP-iEK" firstAttribute="leading" secondItem="vKW-ZA-nXo" secondAttribute="leading" id="vZY-89-oNm"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -241,6 +251,20 @@
                         <action selector="buttonAction:" destination="f7D-Br-LP6" eventType="touchUpInside" id="9ie-bt-LZw"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNy-jG-GtG" customClass="ColorfullButton">
+                    <rect key="frame" x="187" y="0.0" width="46.5" height="50"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                            <real key="value" value="9"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="color">
+                            <color key="value" red="0.098039215690000001" green="0.5568627451" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="buttonAction:" destination="f7D-Br-LP6" eventType="touchUpInside" id="rgv-DE-whs"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Gj-hS-oFY" customClass="ColorfullButton">
                     <rect key="frame" x="234" y="0.0" width="47" height="50"/>
                     <userDefinedRuntimeAttributes>
@@ -269,22 +293,18 @@
                         <action selector="buttonAction:" destination="f7D-Br-LP6" eventType="touchUpInside" id="vQf-FC-k3V"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNc-L8-aAn">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNc-L8-aAn" userLabel="Black Button" customClass="ColorfullButton">
                     <rect key="frame" x="328" y="0.0" width="47" height="50"/>
-                    <state key="normal" image="clip_rotate"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNy-jG-GtG" customClass="ColorfullButton">
-                    <rect key="frame" x="187.5" y="0.0" width="46.5" height="50"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="radius">
                             <real key="value" value="9"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="color">
-                            <color key="value" red="0.098039215690000001" green="0.5568627451" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="buttonAction:" destination="f7D-Br-LP6" eventType="touchUpInside" id="rgv-DE-whs"/>
+                        <action selector="buttonAction:" destination="f7D-Br-LP6" eventType="touchUpInside" id="2Fg-1F-JkK"/>
                     </connections>
                 </button>
             </subviews>
@@ -326,6 +346,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="blackButton" destination="QNc-L8-aAn" id="Vje-hu-cRS"/>
                 <outlet property="blueButton" destination="dNy-jG-GtG" id="4JB-Al-pC6"/>
                 <outlet property="greenButton" destination="ARf-dS-bzm" id="Izm-U5-yMg"/>
                 <outlet property="orangeButton" destination="mkk-gZ-s6N" id="v4F-i9-aJJ"/>
@@ -340,6 +361,7 @@
                 <outletCollection property="colorButtons" destination="dNy-jG-GtG" id="hMy-fN-2gt"/>
                 <outletCollection property="colorButtons" destination="5Gj-hS-oFY" id="4ZY-2O-LIM"/>
                 <outletCollection property="colorButtons" destination="i0g-bR-qjp" id="bNr-AN-D3l"/>
+                <outletCollection property="colorButtons" destination="QNc-L8-aAn" id="Wel-ns-TYK"/>
             </connections>
             <point key="canvasLocation" x="-513" y="-243"/>
         </view>
@@ -348,7 +370,6 @@
         <image name="annotate" width="32" height="32"/>
         <image name="annotate_selected" width="32" height="32"/>
         <image name="clip" width="32" height="32"/>
-        <image name="clip_rotate" width="32" height="32"/>
         <image name="paper" width="100" height="100"/>
         <image name="text" width="32" height="32"/>
         <image name="text_selected" width="32" height="32"/>
