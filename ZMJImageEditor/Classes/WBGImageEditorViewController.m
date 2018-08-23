@@ -646,7 +646,7 @@ NSString * const kColorPanNotificaiton = @"kColorPanNotificaiton";
         case EditorNonMode:
         {
             self.panButton.selected = NO;
-            self.undoButton.hidden  = YES;
+//            self.undoButton.hidden  = YES;
         }
             break;
         default:
@@ -781,6 +781,7 @@ NSString * const kColorPanNotificaiton = @"kColorPanNotificaiton";
 @property (weak, nonatomic) IBOutlet ColorfullButton *blueButton;
 @property (weak, nonatomic) IBOutlet ColorfullButton *pinkButton;
 @property (weak, nonatomic) IBOutlet ColorfullButton *whiteButton;
+@property (weak, nonatomic) IBOutlet ColorfullButton *blackButton;
 
 @end
 
