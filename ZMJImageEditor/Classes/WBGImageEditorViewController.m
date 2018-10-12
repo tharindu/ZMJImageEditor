@@ -117,6 +117,9 @@ NSString * const kColorPanNotificaiton = @"kColorPanNotificaiton";
     self.colorPan.dataSource = self.dataSource;
     [self.view addSubview:_colorPan];
     
+    self.sliderView.frame = CGRectMake(0, self.colorPan.origin.y - 50, [UIScreen mainScreen].bounds.size.width, 50);
+    [self.view addSubview:_sliderView];
+    
     [self initImageScrollView];
     
     @weakify(self);
@@ -403,12 +406,22 @@ NSString * const kColorPanNotificaiton = @"kColorPanNotificaiton";
 ///涂鸦模式
 - (IBAction)panAction:(UIButton *)sender {
     if (_currentMode == EditorDrawMode) {
+        [self closeBrushSize:nil];
         return;
     }
     //先设置状态，然后在干别的
     self.currentMode = EditorDrawMode;
-    
     self.currentTool = self.drawTool;
+    
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear  animations:^{
+        //Animation
+        [self.sliderView setHidden:NO];
+        self.sliderView.alpha = 1.0;
+        
+    } completion:^(BOOL finished) {
+        //Completion
+        
+    }];
 }
 
 ///裁剪模式
@@ -546,6 +559,28 @@ NSString * const kColorPanNotificaiton = @"kColorPanNotificaiton";
     return _keyboard;
 }
 
+- (IBAction)changeBrushSize:(id)sender {
+    
+    NSString *strVal = [NSString stringWithFormat:@"%f", self.brushSize.value];
+    self.lblBrushSize.text = [NSString stringWithFormat:@"%i",strVal.intValue];
+    _drawTool.pathWidth = strVal.intValue;
+}
+
+- (IBAction)closeBrushSize:(id)sender {
+    
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear  animations:^{
+        //Animation
+        self.sliderView.alpha = 0.0;
+        
+    } completion:^(BOOL finished) {
+        //Completion
+        [self.sliderView setHidden:YES];
+        self.currentMode = EditorNonMode;
+    }];
+    
+}
+
+
 #pragma mark - WBGMoreKeyboardDelegate
 - (void) moreKeyboard:(id)keyboard didSelectedFunctionItem:(WBGMoreKeyboardItem *)funcItem {
     WBGMoreKeyboard *kb = (WBGMoreKeyboard *)keyboard;
@@ -646,7 +681,7 @@ NSString * const kColorPanNotificaiton = @"kColorPanNotificaiton";
         case EditorNonMode:
         {
             self.panButton.selected = NO;
-//            self.undoButton.hidden  = YES;
+            self.undoButton.hidden  = YES;
         }
             break;
         default:
