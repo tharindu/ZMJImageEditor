@@ -33,6 +33,9 @@ extern NSString * const kColorPanNotificaiton;
 @property (strong, nonatomic, readonly) IBOutlet WBGColorPan *colorPan;
 
 @property (nonatomic, assign) EditorMode currentMode;
+@property (strong, nonatomic) IBOutlet UIView *sliderView;
+@property (weak, nonatomic) IBOutlet UISlider *brushSize;
+@property (weak, nonatomic) IBOutlet UILabel *lblBrushSize;
 
 - (void)resetCurrentTool;
 
