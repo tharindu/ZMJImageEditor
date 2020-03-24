@@ -29,9 +29,12 @@ IB_DESIGNABLE
 }
 
 - (void)drawCirle {
-    for (CALayer *layer in self.layer.sublayers) {
-        if (!layer.hidden) [layer removeFromSuperlayer];
-    }
+    // remove layers without mutation
+    [self.layer.sublayers enumerateObjectsWithOptions:NSEnumerationReverse  usingBlock:^(__kindof CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (!obj.hidden) {
+            [obj removeFromSuperlayer];
+        }
+    }];
     
     UIGraphicsBeginImageContext(self.bounds.size);
     CAShapeLayer *layer = [CAShapeLayer layer];

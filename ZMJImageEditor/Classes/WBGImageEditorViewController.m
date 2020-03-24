@@ -181,6 +181,9 @@ NSString * const kColorPanNotificaiton = @"kColorPanNotificaiton";
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
+    // Adjust color pan frame
+    self.colorPan.frame = CGRectMake(0, self.view.bounds.size.height - 99, self.colorPan.bounds.size.width, self.colorPan.bounds.size.height);
+    
     if (!self.drawingView) {
         self.drawingView = [[UIImageView alloc] initWithFrame:self.imageView.superview.frame];
         self.drawingView.contentMode = UIViewContentModeCenter;
